@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ECHOServer {
 
-    private static final int port = 59090;
+    private static final int port = 59898;
     private static final ECHOServer instance = new ECHOServer();
     private static List<ClientThread> threadList = new ArrayList<>();
     private static List<String> messageList = new ArrayList<>();
@@ -13,13 +13,10 @@ public class ECHOServer {
     public static void main(String[] args) throws IOException {
         try (var listener = new ServerSocket(port)) {
             System.out.println("The server is running on port " + port + "...");
-            int cnt = 0;
             while (true) {
-                try (var client = listener.accept()) {
-                    ClientThread thread = new ClientThread("ClientThread" + cnt, client);
-                    thread.start();
-                    cnt++;
-                }
+                var client = listener.accept();
+                ClientThread thread = new ClientThread(client);
+                thread.start();
             }
         }
     }

@@ -1,24 +1,10 @@
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 
-public final class Dispatcher {
-    private static volatile Dispatcher instance;
+final class Dispatcher {
 
-    private Dispatcher() {};
-
-    public static Dispatcher getInstance() {
-        if (instance == null) {
-            synchronized (Dispatcher.class) {
-                if (instance == null) {
-                    instance = new Dispatcher();
-                }
-            }
-        }
-        return instance;
-    }
-
-    static void processMessage(PrintWriter out, String request) throws IOException {
+    static void processMessage(DataOutputStream out, String request) throws IOException {
         // Remove redundant spaces
         request = request.trim();
 
@@ -67,6 +53,6 @@ public final class Dispatcher {
                 break;
         }
 
-        out.println(response);
+        out.writeUTF(response);
     }
 }
