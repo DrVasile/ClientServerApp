@@ -14,8 +14,6 @@ public class ClientThread extends Thread {
     @Override
     public void run() {
         try {
-            //var in = new Scanner(socket.getInputStream());
-            //var out = new PrintWriter(socket.getOutputStream(), true);
             DataInputStream in = new DataInputStream(socket.getInputStream());
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
             System.out.println("New Client Thread has been created!");
