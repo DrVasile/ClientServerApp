@@ -23,7 +23,7 @@
   * rem String - removes a message from the list;
   * print-msg - prints all the messages;
 
-4. Request format - <Command> [Message];
+4. Request format - Command [Message];
   
 ## Structure overview :
 
