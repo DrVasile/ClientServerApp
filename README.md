@@ -168,5 +168,5 @@ out.writeUTF(response);
 
 ## Screenshot
 
-![](img/)
+![](img/Capture1.PNG)
 
